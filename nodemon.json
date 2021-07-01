@@ -1,0 +1,14 @@
+{
+    "restartable": "rs",
+    "verbose": true,
+    "ignore": [".git", "node_modules/**/node_modules"],
+    "watch": ["src/"],
+    "events": {
+        "restart": "kill-port 8080",
+        "crash": "kill-port 8080"
+    },
+    "env": {
+        "NODE_ENV": "development"
+    },
+    "ext": "ts"
+}

@@ -1,0 +1,4 @@
+{
+    "*.{ts,js,json}": "eslint --ignore-path .gitignore",
+    "*.md": "markdownlint --ignore-path .gitignore"
+}
