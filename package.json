@@ -31,13 +31,15 @@
     "homepage": "https://github.com/GagaMen/express-example#readme",
     "dependencies": {
         "dotenv": "^10.0.0",
-        "express": "^4.17.1"
+        "express": "^4.17.1",
+        "mongodb": "^3.6.9"
     },
     "devDependencies": {
         "@commitlint/cli": "^12.1.4",
         "@commitlint/config-conventional": "^12.1.4",
         "@types/dotenv": "^8.2.0",
         "@types/express": "^4.17.12",
+        "@types/mongodb": "^3.6.19",
         "@types/node": "^15.12.5",
         "@typescript-eslint/eslint-plugin": "^4.28.1",
         "@typescript-eslint/parser": "^4.28.1",

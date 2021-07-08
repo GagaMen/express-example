@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+    mongodb:
+        image: mongo
+        container_name: mongodb
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: root
+        volumes:
+            - ./data/db:/data/db
+        ports:
+            - 27017:27017
+
+    app:
+        image: node:14
+        container_name: app
+        working_dir: /home/node/app
+        environment:
+            - NODE_ENV=production
+        volumes:
+            - ./:/home/node/app
+        ports:
+            - 8000:8080
+        command: 'npm run dev:start'
+        depends_on:
+            - mongodb

@@ -2,7 +2,7 @@
     "restartable": "rs",
     "verbose": true,
     "ignore": [".git", "node_modules/**/node_modules"],
-    "watch": ["src/"],
+    "watch": ["src/", ".env", "tsconfig.json"],
     "events": {
         "restart": "kill-port 8080",
         "crash": "kill-port 8080"
