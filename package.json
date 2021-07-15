@@ -3,6 +3,10 @@
     "version": "1.0.0",
     "description": "Example project for express using typescript",
     "main": "dist/app.js",
+    "engines": {
+        "node": ">=14",
+        "npm": ">=7"
+    },
     "scripts": {
         "prepare": "husky install",
         "cm": "cz",
