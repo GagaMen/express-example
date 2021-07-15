@@ -25,3 +25,5 @@ services:
         command: 'npm run dev:start'
         depends_on:
             - mongodb
+        profiles:
+            - build
