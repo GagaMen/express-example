@@ -1,12 +1,9 @@
-import dotenv from 'dotenv';
 import express, { Request, Response } from 'express';
 import { Db, MongoClient } from 'mongodb';
-
-// load environment variables
-dotenv.config();
+import config from './config';
 
 // init database
-const databaseUrl = process.env['MONGODB_CONNECTION'] ?? null;
+const databaseUrl = config.mongodb.connection ?? null;
 if (databaseUrl === null) {
     throw Error('No database connection defined. Please check .env file.');
 }
@@ -16,7 +13,7 @@ const client = new MongoClient(databaseUrl);
 void client
     .connect()
     .then(() => {
-        const db: Db = client.db(process.env['MONGODB_DATABASE']);
+        const db: Db = client.db(config.mongodb.database);
         void db.command({ ping: 1 });
         console.log('Connected successfully to database server');
 
@@ -36,12 +33,11 @@ void client
     });
 
 const app = express();
-const port = process.env['SERVER_PORT'] ?? 8080;
 
 app.get('/', (_: Request, res: Response) => {
     res.send('Hello world!');
 });
 
-app.listen(port, () => {
+app.listen(config.server.port, () => {
     console.log(`server started at http://localhost:${port}`);
 });
