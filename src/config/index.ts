@@ -16,4 +16,7 @@ export default {
         connection: process.env['MONGODB_CONNECTION'],
         database: process.env['MONGODB_DATABASE'],
     },
+    api: {
+        prefix: '/api',
+    },
 };
