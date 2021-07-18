@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import { Db, MongoClient } from 'mongodb';
 import config from './config';
+import { initLoaders } from './loader';
 
 // init database
 const databaseUrl = config.mongodb.connection ?? null;
@@ -33,11 +34,12 @@ void client
     });
 
 const app = express();
+initLoaders(app);
 
 app.get('/', (_: Request, res: Response) => {
     res.send('Hello world!');
 });
 
 app.listen(config.server.port, () => {
-    console.log(`server started at http://localhost:${port}`);
+    console.log(`server started at http://localhost:${config.server.port}`);
 });
