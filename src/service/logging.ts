@@ -1,6 +1,7 @@
 import config from './../config';
 import { Service } from 'typedi';
 import winston, { Logger } from 'winston';
+import { LogLevel } from './../model/logLevel';
 
 @Service()
 export class LoggingService {
@@ -62,30 +63,30 @@ export class LoggingService {
     }
 
     public error(message: string): void {
-        this.logger.log('error', message);
+        this.logger.log(LogLevel.ERROR, message);
     }
 
     public warn(message: string): void {
-        this.logger.log('warn', message);
+        this.logger.log(LogLevel.WARN, message);
     }
 
     public info(message: string): void {
-        this.logger.log('info', message);
+        this.logger.log(LogLevel.INFO, message);
     }
 
     public http(message: string): void {
-        this.logger.log('http', message);
+        this.logger.log(LogLevel.HTTP, message);
     }
 
     public verbose(message: string): void {
-        this.logger.log('verbose', message);
+        this.logger.log(LogLevel.VERBOSE, message);
     }
 
     public debug(message: string): void {
-        this.logger.log('debug', message);
+        this.logger.log(LogLevel.DEBUG, message);
     }
 
     public silly(message: string): void {
-        this.logger.log('silly', message);
+        this.logger.log(LogLevel.SILLY, message);
     }
 }
