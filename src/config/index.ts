@@ -19,4 +19,9 @@ export default {
     api: {
         prefix: '/api',
     },
+    logging: {
+        directory: process.env['LOGGING_DIRECTORY'] ?? 'logs/',
+        level: process.env['LOGGING_LEVEL'] ?? 'info',
+        silent: process.env['LOGGING_SILENT'] === 'true',
+    },
 };
