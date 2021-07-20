@@ -11,7 +11,22 @@ export class LoggingService {
         this.logger = winston.createLogger({
             level: config.logging.level,
             silent: config.logging.silent,
+            format: winston.format.combine(
+                winston.format.timestamp({
+                    format: 'YYYY-MM-DD HH:mm:ss',
+                }),
+                winston.format.json(),
+            ),
             transports: [
+                new winston.transports.Console({
+                    format: winston.format.combine(
+                        winston.format.colorize(),
+                        winston.format.printf(
+                            (info: winston.Logform.TransformableInfo) =>
+                                `${info.level}: ${info.message}`,
+                        ),
+                    ),
+                }),
                 new winston.transports.File({
                     dirname: config.logging.directory,
                     filename: 'error.log',
@@ -26,13 +41,6 @@ export class LoggingService {
                     dirname: config.logging.directory,
                     filename: 'info.log',
                     level: 'info',
-                }),
-                new winston.transports.Console({
-                    level: 'info',
-                    format: winston.format.combine(
-                        winston.format.colorize(),
-                        winston.format.simple(),
-                    ),
                 }),
                 new winston.transports.File({
                     dirname: config.logging.directory,
