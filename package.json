@@ -39,7 +39,8 @@
         "mongodb": "^3.6.9",
         "reflect-metadata": "^0.1.13",
         "typedi": "^0.10.0",
-        "winston": "^3.3.3"
+        "winston": "^3.3.3",
+        "winston-daily-rotate-file": "^4.5.5"
     },
     "devDependencies": {
         "@commitlint/cli": "^12.1.4",

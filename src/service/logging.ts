@@ -1,11 +1,20 @@
 import config from './../config';
 import { Service } from 'typedi';
 import winston, { Logger } from 'winston';
+import 'winston-daily-rotate-file';
 import { LogLevel } from './../model/logLevel';
+import { DailyRotateFileTransportOptions } from 'winston-daily-rotate-file';
 
 @Service()
 export class LoggingService {
     protected logger: Logger;
+    protected defaultRotateOptions: DailyRotateFileTransportOptions = {
+        filename: '%DATE%.log',
+        datePattern: 'YYYY-MM-DD',
+        zippedArchive: true,
+        maxSize: '20m',
+        maxFiles: '14d',
+    };
 
     constructor() {
         this.logger = winston.createLogger({
@@ -27,40 +36,40 @@ export class LoggingService {
                         ),
                     ),
                 }),
-                new winston.transports.File({
-                    dirname: config.logging.directory,
-                    filename: 'error.log',
+                new winston.transports.DailyRotateFile({
+                    dirname: `${config.logging.directory}/error`,
                     level: 'error',
+                    ...this.defaultRotateOptions,
                 }),
-                new winston.transports.File({
-                    dirname: config.logging.directory,
-                    filename: 'warn.log',
+                new winston.transports.DailyRotateFile({
+                    dirname: `${config.logging.directory}/warn`,
                     level: 'warn',
+                    ...this.defaultRotateOptions,
                 }),
-                new winston.transports.File({
-                    dirname: config.logging.directory,
-                    filename: 'info.log',
+                new winston.transports.DailyRotateFile({
+                    dirname: `${config.logging.directory}/info`,
                     level: 'info',
+                    ...this.defaultRotateOptions,
                 }),
-                new winston.transports.File({
-                    dirname: config.logging.directory,
-                    filename: 'http.log',
+                new winston.transports.DailyRotateFile({
+                    dirname: `${config.logging.directory}/http`,
                     level: 'http',
+                    ...this.defaultRotateOptions,
                 }),
-                new winston.transports.File({
-                    dirname: config.logging.directory,
-                    filename: 'verbose.log',
+                new winston.transports.DailyRotateFile({
+                    dirname: `${config.logging.directory}/verbose`,
                     level: 'verbose',
+                    ...this.defaultRotateOptions,
                 }),
-                new winston.transports.File({
-                    dirname: config.logging.directory,
-                    filename: 'debug.log',
+                new winston.transports.DailyRotateFile({
+                    dirname: `${config.logging.directory}/debug`,
                     level: 'debug',
+                    ...this.defaultRotateOptions,
                 }),
-                new winston.transports.File({
-                    dirname: config.logging.directory,
-                    filename: 'silly.log',
+                new winston.transports.DailyRotateFile({
+                    dirname: `${config.logging.directory}/silly`,
                     level: 'silly',
+                    ...this.defaultRotateOptions,
                 }),
             ],
         });
