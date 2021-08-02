@@ -1,0 +1,73 @@
+classDiagram
+    class User {
+        id: number
+        username: string
+        password: string
+    }
+
+    class Account {
+        id: number
+        name: string
+        description: string
+        balance: number
+        user: User
+        type: AccountType
+    }
+
+    class AccountType {
+        id: number
+        name: string
+    }
+
+    class Transaction {
+        <<abstract>>
+        id: number
+        data: Date
+        amount: number
+        notice: string
+    }
+
+    class TransactionCategory {
+        id: number
+        name: string
+        type: TransactionCategoryType
+    }
+
+    class TransactionCategoryType {
+        <<enumeration>>
+        INCOME
+        EXPENSE
+    }
+
+    class Income {
+        type: TransactionType = INCOME
+        category: TransactionCategory
+        account: Account
+    }
+
+    class Expense {
+        type: TransactionType = EXPENSE
+        category: TransactionCategory
+        account: Account
+    }
+
+    class Transfer {
+        type: TransactionType = TRANSFER
+        from: Account
+        to: Account
+    }
+
+    Account --> User
+    Account --o AccountType
+
+    Transaction <|-- Income
+    Transaction <|-- Expense
+    Transaction <|-- Transfer
+
+    Income --> TransactionCategory
+    Income --> Account
+    Expense --> TransactionCategory
+    Expense --> Account
+    Transfer --> Account
+
+    TransactionCategory --o TransactionCategoryType
