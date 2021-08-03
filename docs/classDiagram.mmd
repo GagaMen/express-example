@@ -22,7 +22,7 @@ classDiagram
     class Transaction {
         <<abstract>>
         id: number
-        data: Date
+        date: Date
         amount: number
         notice: string
     }
@@ -40,19 +40,16 @@ classDiagram
     }
 
     class Income {
-        type: TransactionType = INCOME
         category: TransactionCategory
         account: Account
     }
 
     class Expense {
-        type: TransactionType = EXPENSE
         category: TransactionCategory
         account: Account
     }
 
     class Transfer {
-        type: TransactionType = TRANSFER
         from: Account
         to: Account
     }
