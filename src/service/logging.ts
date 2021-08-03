@@ -1,13 +1,14 @@
 import config from './../config';
 import { Service } from 'typedi';
-import winston, { Logger } from 'winston';
+import winston, { Logger as WinstonLogger } from 'winston';
 import 'winston-daily-rotate-file';
-import { LogLevel } from './../model/logLevel';
+import { LogLevel } from '../core/model/log-level';
 import { DailyRotateFileTransportOptions } from 'winston-daily-rotate-file';
+import { Logger } from './../core/interface/logger';
 
 @Service()
-export class LoggingService {
-    protected logger: Logger;
+export class LoggingService implements Logger {
+    protected logger: WinstonLogger;
     protected defaultRotateOptions: DailyRotateFileTransportOptions = {
         filename: '%DATE%.log',
         datePattern: 'YYYY-MM-DD',
