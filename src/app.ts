@@ -1,6 +1,6 @@
-import { Logger } from './core/interface/logger';
 import 'reflect-metadata';
 
+import { Logger } from './core/logging/logger';
 import express from 'express';
 import config from './config';
 import initLoaders from './loader';
@@ -15,8 +15,8 @@ class Application {
         this.app = express();
     }
 
-    async start(): Promise<void> {
-        await initLoaders(this.app);
+    start(): void {
+        initLoaders(this.app);
 
         this.app.listen(config.server.port, () => {
             this.logger.info(`server started at http://localhost:${config.server.port}`);

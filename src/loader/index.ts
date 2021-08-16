@@ -1,8 +1,6 @@
 import express from 'express';
 import expressLoader from './express';
-import mongodbLoader from './mongodb';
 
-export default async (expressApp: express.Application): Promise<void> => {
+export default (expressApp: express.Application): void => {
     expressLoader(expressApp);
-    await mongodbLoader();
 };

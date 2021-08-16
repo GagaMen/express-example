@@ -1,4 +1,4 @@
-import { LogLevel } from '../model/log-level';
+import { LogLevel } from './log-level';
 
 export interface Logger {
     log(level: LogLevel, message: string): void;

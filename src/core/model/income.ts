@@ -14,3 +14,5 @@ export class Income extends Transaction {
         super(id, date, amount, notice);
     }
 }
+
+export type IncomeDTO = Pick<Income, 'date' | 'amount' | 'notice' | 'category' | 'account'>;

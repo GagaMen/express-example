@@ -1,0 +1,44 @@
+import { DatabaseService } from './../database';
+import {
+    TransactionCategory,
+    TransactionCategoryDTO,
+} from './../../core/model/transaction-category';
+import { ITransactionCategoryRepository } from './../../core/repository/transaction-category';
+import { Model } from 'mongoose';
+import { transactionCategorySchema } from '../schema/transaction-category.schema';
+
+export class TransactionCategoryRepository implements ITransactionCategoryRepository {
+    private transactionCategoryModel: Model<TransactionCategory>;
+
+    constructor(databaseService: DatabaseService) {
+        this.transactionCategoryModel = databaseService.connection.model<TransactionCategory>(
+            'TransactionCategory',
+            transactionCategorySchema,
+        );
+    }
+
+    async findById(id: string): Promise<TransactionCategory> {
+        const transferCategory = await this.transactionCategoryModel.findById(id);
+
+        if (transferCategory === null) {
+            throw new Error(`TransferCategory not found by using '${id}' as id`);
+        }
+
+        return transferCategory;
+    }
+
+    async create(transferCategory: TransactionCategoryDTO): Promise<TransactionCategory> {
+        return await this.transactionCategoryModel.create(transferCategory);
+    }
+
+    async delete(transferCategory: TransactionCategory): Promise<void> {
+        await this.transactionCategoryModel.findByIdAndDelete(transferCategory.id);
+    }
+
+    async update(transferCategory: TransactionCategory): Promise<void> {
+        await this.transactionCategoryModel.findByIdAndUpdate(transferCategory.id, {
+            name: transferCategory.name,
+            type: transferCategory.type,
+        });
+    }
+}

@@ -11,3 +11,5 @@ export class Account {
         public type: AccountType,
     ) {}
 }
+
+export type AccountDTO = Pick<Account, 'name' | 'description' | 'balance' | 'user' | 'type'>;

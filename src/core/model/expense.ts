@@ -14,3 +14,5 @@ export class Expense extends Transaction {
         super(id, date, amount, notice);
     }
 }
+
+export type ExpenseDTO = Pick<Expense, 'date' | 'amount' | 'notice' | 'category' | 'account'>;

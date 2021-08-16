@@ -1,10 +1,10 @@
+import { LogLevel } from './../core/logging/log-level';
 import config from './../config';
 import { Service } from 'typedi';
 import winston, { Logger as WinstonLogger } from 'winston';
 import 'winston-daily-rotate-file';
-import { LogLevel } from '../core/model/log-level';
 import { DailyRotateFileTransportOptions } from 'winston-daily-rotate-file';
-import { Logger } from './../core/interface/logger';
+import { Logger } from '../core/logging/logger';
 
 @Service()
 export class LoggingService implements Logger {
@@ -76,7 +76,7 @@ export class LoggingService implements Logger {
         });
     }
 
-    public log(level: string, message: string): void {
+    public log(level: LogLevel, message: string): void {
         this.logger.log(level, message);
     }
 

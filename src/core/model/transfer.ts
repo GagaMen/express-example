@@ -13,3 +13,5 @@ export class Transfer extends Transaction {
         super(id, date, amount, notice);
     }
 }
+
+export type TransferDTO = Pick<Transfer, 'date' | 'amount' | 'notice' | 'from' | 'to'>;
