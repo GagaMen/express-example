@@ -3,7 +3,9 @@ import { DatabaseService } from './../database';
 import { Model } from 'mongoose';
 import { Income, IncomeDTO } from './../../core/model/income';
 import { IIncomeRepository } from './../../core/repository/income';
+import { injectable } from 'tsyringe';
 
+@injectable()
 export class IncomeRepository implements IIncomeRepository {
     private incomeModel: Model<Income>;
 

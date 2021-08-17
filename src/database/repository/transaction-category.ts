@@ -6,7 +6,9 @@ import {
 import { ITransactionCategoryRepository } from './../../core/repository/transaction-category';
 import { Model } from 'mongoose';
 import { transactionCategorySchema } from '../schema/transaction-category.schema';
+import { injectable } from 'tsyringe';
 
+@injectable()
 export class TransactionCategoryRepository implements ITransactionCategoryRepository {
     private transactionCategoryModel: Model<TransactionCategory>;
 

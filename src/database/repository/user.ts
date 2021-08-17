@@ -3,9 +3,9 @@ import { User, UserDTO } from './../../core/model/user';
 import { DatabaseService } from '../database';
 import { IUserRepository } from './../../core/repository/user';
 import { Model } from 'mongoose';
-import { Service } from 'typedi';
+import { injectable } from 'tsyringe';
 
-@Service()
+@injectable()
 export class UserRepository implements IUserRepository {
     private userModel: Model<User>;
 

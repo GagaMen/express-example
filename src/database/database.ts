@@ -1,9 +1,7 @@
 import { Connection } from 'mongoose';
-import { Service } from 'typedi';
 import mongoose from 'mongoose';
 import config from '../config';
 
-@Service()
 export class DatabaseService {
     public connection: Connection;
 

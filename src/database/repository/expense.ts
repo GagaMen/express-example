@@ -3,7 +3,9 @@ import { Model } from 'mongoose';
 import { DatabaseService } from '../database';
 import { Expense, ExpenseDTO } from './../../core/model/expense';
 import { IExpenseRepository } from './../../core/repository/expense';
+import { injectable } from 'tsyringe';
 
+@injectable()
 export class ExpenseRepository implements IExpenseRepository {
     private expenseModel: Model<Expense>;
 

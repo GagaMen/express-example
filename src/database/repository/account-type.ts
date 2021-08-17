@@ -1,9 +1,11 @@
 import { Model } from 'mongoose';
+import { injectable } from 'tsyringe';
 import { DatabaseService } from '../database';
 import { accountTypeSchema } from '../schema/account-type.schema';
 import { AccountType, AccountTypeDTO } from './../../core/model/account-type';
 import { IAccountTypeRepository } from './../../core/repository/account-type';
 
+@injectable()
 export class AccountTypeRepository implements IAccountTypeRepository {
     private accountTypeModel: Model<AccountType>;
 

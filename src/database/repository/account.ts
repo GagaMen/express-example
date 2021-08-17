@@ -1,9 +1,11 @@
 import { Model } from 'mongoose';
+import { injectable } from 'tsyringe';
 import { DatabaseService } from '../database';
 import { accountSchema } from '../schema/account.schema';
 import { Account, AccountDTO } from './../../core/model/account';
 import { IAccountRepository } from './../../core/repository/account';
 
+@injectable()
 export class AccountRepository implements IAccountRepository {
     private accountModel: Model<Account>;
 

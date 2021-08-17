@@ -3,9 +3,9 @@ import { DatabaseService } from './../database';
 import { Transfer, TransferDTO } from './../../core/model/transfer';
 import { Model } from 'mongoose';
 import { ITransferRepository } from './../../core/repository/transfer';
-import { Service } from 'typedi';
+import { injectable } from 'tsyringe';
 
-@Service()
+@injectable()
 export class TransferRepository implements ITransferRepository {
     private transferModel: Model<Transfer>;
 

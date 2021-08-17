@@ -2,16 +2,16 @@ import 'reflect-metadata';
 
 import { Logger } from './core/logging/logger';
 import express from 'express';
+import initDependencyContainer from './config/dependency-container';
 import config from './config';
 import initLoaders from './loader';
-import Container, { Service } from 'typedi';
-import { InjectLogger } from './decorator/inject-logger';
+import { container, inject, injectable } from 'tsyringe';
 
-@Service()
+@injectable()
 class Application {
     private app: express.Application;
 
-    constructor(@InjectLogger() private logger: Logger) {
+    constructor(@inject('Logger') private logger: Logger) {
         this.app = express();
     }
 
@@ -24,6 +24,7 @@ class Application {
     }
 }
 
-const app: Application = Container.get(Application);
+initDependencyContainer();
+const app: Application = container.resolve(Application);
 
 void app.start();
