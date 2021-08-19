@@ -1,12 +1,12 @@
 import { Model } from 'mongoose';
 import { injectable } from 'tsyringe';
-import { DatabaseService } from '../database';
+import { DatabaseService } from '../database.service';
 import { accountSchema } from '../schema/account.schema';
-import { Account, AccountDTO } from './../../core/model/account';
-import { IAccountRepository } from './../../core/repository/account';
+import { Account, AccountDTO } from '../../core/model/account';
+import { AccountRepository } from '../../core/repository/account.repository';
 
 @injectable()
-export class AccountRepository implements IAccountRepository {
+export class ConcreteAccountRepository implements AccountRepository {
     private accountModel: Model<Account>;
 
     constructor(databaseService: DatabaseService) {

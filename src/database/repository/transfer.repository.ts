@@ -1,12 +1,12 @@
-import { transferSchema } from './../schema/transfer.schema';
-import { DatabaseService } from './../database';
-import { Transfer, TransferDTO } from './../../core/model/transfer';
+import { transferSchema } from '../schema/transfer.schema';
+import { DatabaseService } from '../database.service';
+import { Transfer, TransferDTO } from '../../core/model/transfer';
 import { Model } from 'mongoose';
-import { ITransferRepository } from './../../core/repository/transfer';
+import { TransferRepository } from '../../core/repository/transfer.repository';
 import { injectable } from 'tsyringe';
 
 @injectable()
-export class TransferRepository implements ITransferRepository {
+export class ConcreteTransferRepository implements TransferRepository {
     private transferModel: Model<Transfer>;
 
     constructor(databaseService: DatabaseService) {

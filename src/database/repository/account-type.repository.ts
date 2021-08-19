@@ -1,12 +1,12 @@
 import { Model } from 'mongoose';
 import { injectable } from 'tsyringe';
-import { DatabaseService } from '../database';
+import { DatabaseService } from '../database.service';
 import { accountTypeSchema } from '../schema/account-type.schema';
-import { AccountType, AccountTypeDTO } from './../../core/model/account-type';
-import { IAccountTypeRepository } from './../../core/repository/account-type';
+import { AccountType, AccountTypeDTO } from '../../core/model/account-type';
+import { AccountTypeRepository } from '../../core/repository/account-type.repository';
 
 @injectable()
-export class AccountTypeRepository implements IAccountTypeRepository {
+export class ConcreteAccountTypeRepository implements AccountTypeRepository {
     private accountTypeModel: Model<AccountType>;
 
     constructor(databaseService: DatabaseService) {

@@ -1,5 +1,5 @@
 import { Schema } from 'mongoose';
-import { Transfer } from './../../core/model/transfer';
+import { Transfer } from '../../core/model/transfer';
 import { accountSchema } from './account.schema';
 
 export const transferSchema = new Schema<Transfer>({

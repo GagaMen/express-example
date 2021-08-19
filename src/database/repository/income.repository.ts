@@ -1,12 +1,12 @@
-import { incomeSchema } from './../schema/income.schema';
-import { DatabaseService } from './../database';
+import { incomeSchema } from '../schema/income.schema';
+import { DatabaseService } from '../database.service';
 import { Model } from 'mongoose';
-import { Income, IncomeDTO } from './../../core/model/income';
-import { IIncomeRepository } from './../../core/repository/income';
+import { Income, IncomeDTO } from '../../core/model/income';
+import { IncomeRepository } from '../../core/repository/income.repository';
 import { injectable } from 'tsyringe';
 
 @injectable()
-export class IncomeRepository implements IIncomeRepository {
+export class ConcreteIncomeRepository implements IncomeRepository {
     private incomeModel: Model<Income>;
 
     constructor(databaseService: DatabaseService) {

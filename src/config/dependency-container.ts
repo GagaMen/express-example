@@ -1,22 +1,22 @@
-import { LoggingService } from './../service/logging';
+import { LoggingService } from '../service/logging.service';
 import { container } from 'tsyringe';
-import { AccountTypeRepository } from './../database/repository/account-type';
-import { AccountRepository } from './../database/repository/account';
-import { ExpenseRepository } from './../database/repository/expense';
-import { IncomeRepository } from './../database/repository/income';
-import { TransactionCategoryRepository } from './../database/repository/transaction-category';
-import { TransferRepository } from './../database/repository/transfer';
-import { UserRepository } from './../database/repository/user';
+import { ConcreteAccountTypeRepository } from '../database/repository/account-type.repository';
+import { ConcreteAccountRepository } from '../database/repository/account.repository';
+import { ConcreteExpenseRepository } from '../database/repository/expense.repository';
+import { ConcreteIncomeRepository } from '../database/repository/income.repository';
+import { ConcreteTransactionCategoryRepository } from '../database/repository/transaction-category.repository';
+import { ConcreteTransferRepository } from '../database/repository/transfer.repository';
+import { ConcreteUserRepository } from '../database/repository/user.repository';
 
 export default (): void => {
     container.register('Logger', { useClass: LoggingService });
-    container.register('AccountTypeRepository', { useClass: AccountTypeRepository });
-    container.register('AccountRepository', { useClass: AccountRepository });
-    container.register('ExpenseRepository', { useClass: ExpenseRepository });
-    container.register('IncomeRepository', { useClass: IncomeRepository });
+    container.register('AccountTypeRepository', { useClass: ConcreteAccountTypeRepository });
+    container.register('AccountRepository', { useClass: ConcreteAccountRepository });
+    container.register('ExpenseRepository', { useClass: ConcreteExpenseRepository });
+    container.register('IncomeRepository', { useClass: ConcreteIncomeRepository });
     container.register('TransactionCategoryRepository', {
-        useClass: TransactionCategoryRepository,
+        useClass: ConcreteTransactionCategoryRepository,
     });
-    container.register('TransferRepository', { useClass: TransferRepository });
-    container.register('UserRepository', { useClass: UserRepository });
+    container.register('TransferRepository', { useClass: ConcreteTransferRepository });
+    container.register('UserRepository', { useClass: ConcreteUserRepository });
 };

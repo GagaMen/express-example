@@ -1,15 +1,12 @@
-import { DatabaseService } from './../database';
-import {
-    TransactionCategory,
-    TransactionCategoryDTO,
-} from './../../core/model/transaction-category';
-import { ITransactionCategoryRepository } from './../../core/repository/transaction-category';
+import { DatabaseService } from '../database.service';
+import { TransactionCategory, TransactionCategoryDTO } from '../../core/model/transaction-category';
+import { TransactionCategoryRepository } from '../../core/repository/transaction-category.repository';
 import { Model } from 'mongoose';
 import { transactionCategorySchema } from '../schema/transaction-category.schema';
 import { injectable } from 'tsyringe';
 
 @injectable()
-export class TransactionCategoryRepository implements ITransactionCategoryRepository {
+export class ConcreteTransactionCategoryRepository implements TransactionCategoryRepository {
     private transactionCategoryModel: Model<TransactionCategory>;
 
     constructor(databaseService: DatabaseService) {

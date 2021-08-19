@@ -1,12 +1,12 @@
-import { userSchema } from './../schema/user.schema';
-import { User, UserDTO } from './../../core/model/user';
-import { DatabaseService } from '../database';
-import { IUserRepository } from './../../core/repository/user';
+import { userSchema } from '../schema/user.schema';
+import { User, UserDTO } from '../../core/model/user';
+import { DatabaseService } from '../database.service';
+import { UserRepository } from '../../core/repository/user.repository';
 import { Model } from 'mongoose';
 import { injectable } from 'tsyringe';
 
 @injectable()
-export class UserRepository implements IUserRepository {
+export class ConcreteUserRepository implements UserRepository {
     private userModel: Model<User>;
 
     constructor(databaseService: DatabaseService) {

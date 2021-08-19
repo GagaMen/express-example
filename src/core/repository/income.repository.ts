@@ -1,6 +1,6 @@
-import { Income, IncomeDTO } from './../model/income';
+import { Income, IncomeDTO } from '../model/income';
 
-export interface IIncomeRepository {
+export interface IncomeRepository {
     findById(id: string): Promise<Income>;
     create(income: IncomeDTO): Promise<Income>;
     delete(income: Income): Promise<void>;

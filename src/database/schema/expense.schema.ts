@@ -1,6 +1,6 @@
 import { transactionCategorySchema } from './transaction-category.schema';
 import { Schema } from 'mongoose';
-import { Expense } from './../../core/model/expense';
+import { Expense } from '../../core/model/expense';
 import { accountSchema } from './account.schema';
 
 export const expenseSchema = new Schema<Expense>({

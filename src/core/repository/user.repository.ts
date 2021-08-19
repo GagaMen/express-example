@@ -1,6 +1,6 @@
-import { User, UserDTO } from './../model/user';
+import { User, UserDTO } from '../model/user';
 
-export interface IUserRepository {
+export interface UserRepository {
     findById(id: string): Promise<User>;
     create(user: UserDTO): Promise<User>;
     delete(user: User): Promise<void>;

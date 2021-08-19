@@ -1,6 +1,6 @@
-import { Expense, ExpenseDTO } from './../model/expense';
+import { Expense, ExpenseDTO } from '../model/expense';
 
-export interface IExpenseRepository {
+export interface ExpenseRepository {
     findById(id: string): Promise<Expense>;
     create(expense: ExpenseDTO): Promise<Expense>;
     delete(expense: Expense): Promise<void>;

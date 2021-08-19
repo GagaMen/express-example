@@ -1,12 +1,12 @@
-import { expenseSchema } from './../schema/expense.schema';
+import { expenseSchema } from '../schema/expense.schema';
 import { Model } from 'mongoose';
-import { DatabaseService } from '../database';
-import { Expense, ExpenseDTO } from './../../core/model/expense';
-import { IExpenseRepository } from './../../core/repository/expense';
+import { DatabaseService } from '../database.service';
+import { Expense, ExpenseDTO } from '../../core/model/expense';
+import { ExpenseRepository } from '../../core/repository/expense.repository';
 import { injectable } from 'tsyringe';
 
 @injectable()
-export class ExpenseRepository implements IExpenseRepository {
+export class ConcreteExpenseRepository implements ExpenseRepository {
     private expenseModel: Model<Expense>;
 
     constructor(databaseService: DatabaseService) {

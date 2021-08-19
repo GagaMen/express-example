@@ -1,5 +1,5 @@
 import { Schema } from 'mongoose';
-import { Income } from './../../core/model/income';
+import { Income } from '../../core/model/income';
 import { accountSchema } from './account.schema';
 import { transactionCategorySchema } from './transaction-category.schema';
 

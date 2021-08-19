@@ -1,6 +1,6 @@
 import * as express from 'express';
-import config from './../config';
-import routes from './../api';
+import config from '../config';
+import routes from '../api';
 
 export default (app: express.Application): express.Application => {
     app.get('/status', (_, res) => {
