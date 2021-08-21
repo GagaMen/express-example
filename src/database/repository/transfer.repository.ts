@@ -23,6 +23,10 @@ export class ConcreteTransferRepository implements TransferRepository {
         return transfer;
     }
 
+    async findAll(): Promise<Transfer[]> {
+        return await this.transferModel.find({});
+    }
+
     async create(tranfer: TransferDTO): Promise<Transfer> {
         return await this.transferModel.create(tranfer);
     }

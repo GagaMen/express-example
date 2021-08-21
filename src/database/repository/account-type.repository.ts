@@ -26,6 +26,10 @@ export class ConcreteAccountTypeRepository implements AccountTypeRepository {
         return accountType;
     }
 
+    async findAll(): Promise<AccountType[]> {
+        return await this.accountTypeModel.find({});
+    }
+
     async create(accountType: AccountTypeDTO): Promise<AccountType> {
         return await this.accountTypeModel.create(accountType);
     }

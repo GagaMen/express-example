@@ -23,6 +23,10 @@ export class ConcreteAccountRepository implements AccountRepository {
         return account;
     }
 
+    async findAll(): Promise<Account[]> {
+        return await this.accountModel.find({});
+    }
+
     async create(account: AccountDTO): Promise<Account> {
         return await this.accountModel.create(account);
     }

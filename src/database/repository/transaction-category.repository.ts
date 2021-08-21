@@ -26,6 +26,10 @@ export class ConcreteTransactionCategoryRepository implements TransactionCategor
         return transferCategory;
     }
 
+    async findAll(): Promise<TransactionCategory[]> {
+        return await this.transactionCategoryModel.find({});
+    }
+
     async create(transferCategory: TransactionCategoryDTO): Promise<TransactionCategory> {
         return await this.transactionCategoryModel.create(transferCategory);
     }

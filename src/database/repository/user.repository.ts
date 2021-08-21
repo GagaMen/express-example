@@ -23,6 +23,10 @@ export class ConcreteUserRepository implements UserRepository {
         return user;
     }
 
+    async findAll(): Promise<User[]> {
+        return await this.userModel.find({});
+    }
+
     async create(user: UserDTO): Promise<User> {
         return await this.userModel.create(user);
     }

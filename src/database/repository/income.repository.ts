@@ -23,6 +23,10 @@ export class ConcreteIncomeRepository implements IncomeRepository {
         return income;
     }
 
+    async findAll(): Promise<Income[]> {
+        return await this.incomeModel.find({});
+    }
+
     async create(income: IncomeDTO): Promise<Income> {
         return await this.incomeModel.create(income);
     }

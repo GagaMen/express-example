@@ -23,6 +23,10 @@ export class ConcreteExpenseRepository implements ExpenseRepository {
         return expense;
     }
 
+    async findAll(): Promise<Expense[]> {
+        return await this.expenseModel.find({});
+    }
+
     async create(expense: ExpenseDTO): Promise<Expense> {
         return await this.expenseModel.create(expense);
     }
