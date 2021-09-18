@@ -4,6 +4,7 @@ import { DatabaseService } from '../database.service';
 import { UserRepository } from '../../core/repository/user.repository';
 import { Model } from 'mongoose';
 import { injectable } from 'tsyringe';
+import { NotFoundError } from '../../error/not-found.error';
 
 @injectable()
 export class ConcreteUserRepository implements UserRepository {
@@ -17,14 +18,20 @@ export class ConcreteUserRepository implements UserRepository {
         const user = await this.userModel.findById(id);
 
         if (user === null) {
-            throw new Error(`User not found by using '${id}' as id`);
+            throw new NotFoundError(`User not found by using '${id}' as id`);
         }
 
         return user;
     }
 
     async findAll(): Promise<User[]> {
-        return await this.userModel.find({});
+        return await this.userModel.find();
+    }
+
+    async find(limit: number, page: number): Promise<User[]> {
+        const offset = limit * (page - 1);
+
+        return await this.userModel.find().limit(limit).skip(offset);
     }
 
     async create(user: UserDTO): Promise<User> {
