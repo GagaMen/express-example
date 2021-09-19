@@ -1,6 +1,7 @@
 import { UserRepository } from '../../core/repository/user.repository';
 import { inject, injectable } from 'tsyringe';
 import { User, UserDTO } from '../../core/model/user';
+import * as argon2 from 'argon2';
 
 @injectable()
 export class UserService {
@@ -15,6 +16,8 @@ export class UserService {
     }
 
     async create(user: UserDTO): Promise<User> {
+        user.password = await argon2.hash(user.password);
+
         return await this.userRepository.create(user);
     }
 
@@ -26,7 +29,7 @@ export class UserService {
         }
 
         if (userDelta.password !== undefined) {
-            user.password = userDelta.password;
+            user.password = await argon2.hash(userDelta.password);
         }
 
         await this.userRepository.update(user);
