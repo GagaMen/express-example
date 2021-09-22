@@ -11,7 +11,10 @@ export class DatabaseService {
             throw Error('No database connection defined. Please check .env file.');
         }
 
-        this.connection = mongoose.createConnection(databaseUrl + config.mongodb.database, {
+        this.connection = mongoose.createConnection(databaseUrl, {
+            user: config.mongodb.user,
+            pass: config.mongodb.password,
+            dbName: config.mongodb.database,
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false,
