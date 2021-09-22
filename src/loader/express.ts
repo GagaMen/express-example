@@ -1,10 +1,13 @@
 import * as express from 'express';
+import cors from 'cors';
 import config from '../config/app.config';
 import routes from '../api';
 import logErrorMiddleware from '../middleware/log-error.middleware';
 import catchAllErrorsMiddleware from '../middleware/catch-all-errors.middleware';
+import { corsConfig } from '../config/cors.config';
 
 export default (app: express.Application): express.Application => {
+    app.use(cors(corsConfig));
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 

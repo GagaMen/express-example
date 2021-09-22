@@ -36,6 +36,7 @@
     "homepage": "https://github.com/GagaMen/express-example#readme",
     "dependencies": {
         "argon2": "^0.28.2",
+        "cors": "^2.8.5",
         "dotenv": "^10.0.0",
         "express": "^4.17.1",
         "mongodb": "^3.6.9",
@@ -49,6 +50,7 @@
         "@commitlint/cli": "^12.1.4",
         "@commitlint/config-conventional": "^12.1.4",
         "@mermaid-js/mermaid-cli": "^8.11.0",
+        "@types/cors": "^2.8.12",
         "@types/dotenv": "^8.2.0",
         "@types/express": "^4.17.12",
         "@types/mongodb": "^3.6.19",
