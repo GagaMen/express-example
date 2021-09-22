@@ -1,5 +1,5 @@
 import { LogLevel } from '../core/logging/log-level';
-import config from '../config';
+import config from '../config/app.config';
 import winston, { Logger as WinstonLogger } from 'winston';
 import 'winston-daily-rotate-file';
 import { DailyRotateFileTransportOptions } from 'winston-daily-rotate-file';

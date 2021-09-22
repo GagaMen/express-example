@@ -1,5 +1,5 @@
 import * as express from 'express';
-import config from '../config';
+import config from '../config/app.config';
 import routes from '../api';
 import logErrorMiddleware from '../middleware/log-error.middleware';
 import catchAllErrorsMiddleware from '../middleware/catch-all-errors.middleware';

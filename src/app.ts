@@ -2,8 +2,8 @@ import 'reflect-metadata';
 
 import { Logger } from './core/logging/logger';
 import express from 'express';
-import initDependencyContainer from './config/dependency-container';
-import config from './config';
+import initDependencyContainer from './config/dependency-container.config';
+import config from './config/app.config';
 import initLoaders from './loader';
 import { container, inject, injectable } from 'tsyringe';
 
