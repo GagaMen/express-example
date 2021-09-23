@@ -30,6 +30,12 @@ export class ConcreteAccountTypeRepository implements AccountTypeRepository {
         return await this.accountTypeModel.find({});
     }
 
+    async find(limit: number, page: number): Promise<AccountType[]> {
+        const offset = limit * (page - 1);
+
+        return await this.accountTypeModel.find().limit(limit).skip(offset);
+    }
+
     async create(accountType: AccountTypeDTO): Promise<AccountType> {
         return await this.accountTypeModel.create(accountType);
     }
