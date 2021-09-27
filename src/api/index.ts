@@ -9,10 +9,10 @@ export default (): Router => {
     hello(app);
 
     const userRoutes = container.resolve(UserRoutes);
-    userRoutes.getRoutes(app);
+    userRoutes.registerRoutes(app);
 
     const accountTypeRoutes = container.resolve(AccountTypeRoutes);
-    accountTypeRoutes.getRoutes(app);
+    accountTypeRoutes.registerRoutes(app);
 
     return app;
 };

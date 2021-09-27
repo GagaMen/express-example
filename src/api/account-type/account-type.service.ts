@@ -1,9 +1,10 @@
 import { AccountType, AccountTypeDTO } from '../../core/model/account-type';
 import { inject, injectable } from 'tsyringe';
 import { AccountTypeRepository } from '../../core/repository/account-type.repository';
+import { Service } from '../common/service';
 
 @injectable()
-export class AccountTypeService {
+export class AccountTypeService implements Service<AccountType> {
     constructor(
         @inject('AccountTypeRepository') private accountTypeRepository: AccountTypeRepository,
     ) {}

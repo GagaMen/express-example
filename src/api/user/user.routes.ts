@@ -1,26 +1,27 @@
 import { Router } from 'express';
 import { injectable } from 'tsyringe';
+import { Route } from '../common/route';
 import { UserController } from './user.controller';
 
 @injectable()
-export class UserRoutes {
+export class UserRoutes implements Route {
     private userRouter: Router = Router();
 
     constructor(private userController: UserController) {}
 
-    getRoutes(mainRouter: Router): void {
-        mainRouter.use('/user', this.userRouter);
+    registerRoutes(appRouter: Router): void {
+        appRouter.use('/user', this.userRouter);
 
         this.userRouter
             .route('/')
-            .get(this.userController.getAllUsers.bind(this.userController))
-            .post(this.userController.createUser.bind(this.userController));
+            .get(this.userController.getAll.bind(this.userController))
+            .post(this.userController.create.bind(this.userController));
 
         this.userRouter
             .route('/:userId')
-            .get(this.userController.getUserById.bind(this.userController))
-            .patch(this.userController.patchUser.bind(this.userController))
-            .put(this.userController.putUser.bind(this.userController))
-            .delete(this.userController.deleteUser.bind(this.userController));
+            .get(this.userController.getById.bind(this.userController))
+            .patch(this.userController.patch.bind(this.userController))
+            .put(this.userController.put.bind(this.userController))
+            .delete(this.userController.delete.bind(this.userController));
     }
 }

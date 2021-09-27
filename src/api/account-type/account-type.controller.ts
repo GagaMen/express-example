@@ -3,12 +3,13 @@ import { NextFunction, Request, Response } from 'express';
 import { AccountTypeService } from './account-type.service';
 import { MissingDataError } from '../../error/missing-data.error';
 import { AccountTypeDTO } from '../../core/model/account-type';
+import { Controller } from '../common/controller';
 
 @injectable()
-export class AccountTypeController {
+export class AccountTypeController implements Controller {
     constructor(private accountTypeService: AccountTypeService) {}
 
-    async getAllAccountTypes(reg: Request, res: Response, next: NextFunction): Promise<void> {
+    async getAll(reg: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             let limit: number | 'NaN' | undefined = Number(reg.query['limit']);
             let page: number | 'NaN' | undefined = Number(reg.query['page']);
@@ -29,7 +30,7 @@ export class AccountTypeController {
         }
     }
 
-    async getAccountTypeById(req: Request, res: Response, next: NextFunction): Promise<void> {
+    async getById(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const accountTypeId: string | null = req.params['accountTypeId'] ?? null;
 
@@ -45,7 +46,7 @@ export class AccountTypeController {
         }
     }
 
-    async createAccountType(req: Request, res: Response, next: NextFunction): Promise<void> {
+    async create(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const name: string | null = (req.body as AccountTypeDTO).name ?? null;
 
@@ -63,7 +64,7 @@ export class AccountTypeController {
         }
     }
 
-    async patchAccountType(req: Request, res: Response, next: NextFunction): Promise<void> {
+    async patch(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const accountTypeId: string | null = req.params['accountTypeId'] ?? null;
 
@@ -83,7 +84,7 @@ export class AccountTypeController {
         }
     }
 
-    async putAccountType(req: Request, res: Response, next: NextFunction): Promise<void> {
+    async put(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const accountTypeId: string | null = req.params['accountTypeId'] ?? null;
 
@@ -109,7 +110,7 @@ export class AccountTypeController {
         }
     }
 
-    async deleteAccountType(req: Request, res: Response, next: NextFunction): Promise<void> {
+    async delete(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const accountTypeId: string | null = req.params['accountTypeId'] ?? null;
 

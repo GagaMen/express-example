@@ -2,9 +2,10 @@ import { UserRepository } from '../../core/repository/user.repository';
 import { inject, injectable } from 'tsyringe';
 import { User, UserDTO } from '../../core/model/user';
 import * as argon2 from 'argon2';
+import { Service } from '../common/service';
 
 @injectable()
-export class UserService {
+export class UserService implements Service<User> {
     constructor(@inject('UserRepository') private userRepository: UserRepository) {}
 
     async list(limit = 100, page = 1): Promise<User[]> {

@@ -3,12 +3,13 @@ import { NextFunction, Request, Response } from 'express';
 import { UserDTO } from '../../core/model/user';
 import { UserService } from './user.service';
 import { MissingDataError } from '../../error/missing-data.error';
+import { Controller } from '../common/controller';
 
 @injectable()
-export class UserController {
+export class UserController implements Controller {
     constructor(private userService: UserService) {}
 
-    async getAllUsers(reg: Request, res: Response, next: NextFunction): Promise<void> {
+    async getAll(reg: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             let limit: number | 'NaN' | undefined = Number(reg.query['limit']);
             let page: number | 'NaN' | undefined = Number(reg.query['page']);
@@ -29,7 +30,7 @@ export class UserController {
         }
     }
 
-    async getUserById(req: Request, res: Response, next: NextFunction): Promise<void> {
+    async getById(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId: string | null = req.params['userId'] ?? null;
 
@@ -45,7 +46,7 @@ export class UserController {
         }
     }
 
-    async createUser(req: Request, res: Response, next: NextFunction): Promise<void> {
+    async create(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const username: string | null = (req.body as UserDTO).username ?? null;
 
@@ -70,7 +71,7 @@ export class UserController {
         }
     }
 
-    async patchUser(req: Request, res: Response, next: NextFunction): Promise<void> {
+    async patch(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId: string | null = req.params['userId'] ?? null;
 
@@ -87,7 +88,7 @@ export class UserController {
         }
     }
 
-    async putUser(req: Request, res: Response, next: NextFunction): Promise<void> {
+    async put(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId: string | null = req.params['userId'] ?? null;
 
@@ -108,7 +109,7 @@ export class UserController {
         }
     }
 
-    async deleteUser(req: Request, res: Response, next: NextFunction): Promise<void> {
+    async delete(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const userId: string | null = req.params['userId'] ?? null;
 
