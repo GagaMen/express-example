@@ -9,10 +9,10 @@ import { Controller } from '../common/controller';
 export class AccountTypeController implements Controller {
     constructor(private accountTypeService: AccountTypeService) {}
 
-    async getAll(reg: Request, res: Response, next: NextFunction): Promise<void> {
+    async getAll(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
-            let limit: number | 'NaN' | undefined = Number(reg.query['limit']);
-            let page: number | 'NaN' | undefined = Number(reg.query['page']);
+            let limit: number | 'NaN' | undefined = Number(req.query['limit']);
+            let page: number | 'NaN' | undefined = Number(req.query['page']);
 
             if (isNaN(limit)) {
                 limit = undefined;
