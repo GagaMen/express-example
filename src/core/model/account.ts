@@ -7,8 +7,8 @@ export class Account {
         public name: string,
         public description: string,
         public balance: number,
-        public user: User,
-        public type: AccountType,
+        public user: User | string,
+        public type: AccountType | string,
     ) {}
 }
 

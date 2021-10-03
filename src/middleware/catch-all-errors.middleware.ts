@@ -7,6 +7,7 @@ interface StatusCodeMap {
 const statusCodeMap: StatusCodeMap = {
     MissingDataError: 400,
     NotFoundError: 404,
+    WrongDataError: 400,
 };
 
 export default (err: Error, _req: Request, res: Response, _: NextFunction): void => {
