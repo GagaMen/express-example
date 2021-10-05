@@ -27,6 +27,12 @@ export class ConcreteExpenseRepository implements ExpenseRepository {
         return await this.expenseModel.find({});
     }
 
+    async find(limit: number, page: number): Promise<Expense[]> {
+        const offset = limit * (page - 1);
+
+        return await this.expenseModel.find({}).limit(limit).skip(offset);
+    }
+
     async create(expense: ExpenseDTO): Promise<Expense> {
         return await this.expenseModel.create(expense);
     }

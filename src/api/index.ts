@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { container } from 'tsyringe';
 import { AccountTypeRoutes } from './account-type/account-type.routes';
 import { AccountRoutes } from './account/account.routes';
+import { ExpenseRoutes } from './expense/expense.routes';
 import { TransactionCategoryRoutes } from './transaction-category/transaction-category.routes';
 import { TransferRoutes } from './transfer/transfer.routes';
 import { UserRoutes } from './user/user.routes';
@@ -23,6 +24,9 @@ export default (): Router => {
 
     const transferRoutes = container.resolve(TransferRoutes);
     transferRoutes.registerRoutes(app);
+
+    const expenseRoutes = container.resolve(ExpenseRoutes);
+    expenseRoutes.registerRoutes(app);
 
     return app;
 };
