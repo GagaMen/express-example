@@ -27,6 +27,12 @@ export class ConcreteIncomeRepository implements IncomeRepository {
         return await this.incomeModel.find({});
     }
 
+    async find(limit: number, page: number): Promise<Income[]> {
+        const offset = limit * (page - 1);
+
+        return await this.incomeModel.find({}).limit(limit).skip(offset);
+    }
+
     async create(income: IncomeDTO): Promise<Income> {
         return await this.incomeModel.create(income);
     }
