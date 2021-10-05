@@ -27,6 +27,12 @@ export class ConcreteTransferRepository implements TransferRepository {
         return await this.transferModel.find({});
     }
 
+    async find(limit: number, page: number): Promise<Transfer[]> {
+        const offset = limit * (page - 1);
+
+        return await this.transferModel.find({}).limit(limit).skip(offset);
+    }
+
     async create(tranfer: TransferDTO): Promise<Transfer> {
         return await this.transferModel.create(tranfer);
     }
