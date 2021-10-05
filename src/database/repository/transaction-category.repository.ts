@@ -30,6 +30,12 @@ export class ConcreteTransactionCategoryRepository implements TransactionCategor
         return await this.transactionCategoryModel.find({});
     }
 
+    async find(limit: number, page: number): Promise<TransactionCategory[]> {
+        const offset = limit * (page - 1);
+
+        return await this.transactionCategoryModel.find({}).limit(limit).skip(offset);
+    }
+
     async create(transferCategory: TransactionCategoryDTO): Promise<TransactionCategory> {
         return await this.transactionCategoryModel.create(transferCategory);
     }

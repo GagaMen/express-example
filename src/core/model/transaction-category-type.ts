@@ -1,4 +1,4 @@
 export enum TransactionCategoryType {
-    INCOME,
+    INCOME = 1,
     EXPENSE,
 }
