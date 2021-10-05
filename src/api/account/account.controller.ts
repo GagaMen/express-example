@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/require-await */
 import { Request, Response, NextFunction } from 'express';
 import { WrongDataError } from '../../error/wrong-data.error';
 import { injectable } from 'tsyringe';
